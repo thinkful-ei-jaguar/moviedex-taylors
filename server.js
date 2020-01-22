@@ -2,13 +2,16 @@ const express = require('express');
 const morgan = require('morgan');
 const movies = require('./movies');
 require('dotenv').config();
+const cors = require('cors');
+const helmet = require('helmet');
 
 const app = express();
 
 app.use(morgan('dev'));
+app.use(helmet());
+app.use(cors());
 app.use(validateBearerToken);
 
-const validGenres = ['Animation', 'Drama', 'Romantic', 'Comedy', 'Spy', 'Crime', 'Thriller', 'Adventure', 'Documentary', 'Horror', 'Action', 'Western', 'History', 'Biography', 'Musical', 'Fantasy', 'War', 'Grotesque'];
 const API_TOKEN = process.env.API_TOKEN;
 
 function validateBearerToken(req, res, next) {
