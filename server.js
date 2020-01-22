@@ -15,13 +15,23 @@ app.get('/movie', (req, res) => {
     let response = movies;
     
     if (genre) {
-        response = response.filter(movie => movie.genre.toLocaleLowerCase().includes(genre.toLowerCase()));
+        response = response.filter(movie => movie.genre.toLowerCase().includes(genre.toLowerCase()));
     }
 
     if(country) {
         response = response.filter(movie=>movie.country.toLowerCase().includes(country.toLowerCase()))
     }
 
+    if(avg_vote) {
+        response = response.filter(movie => {
+            if (movie.avg_vote >= avg_vote) {
+                return movie
+            }
+            return null;
+            }
+            )
+        
+    }
 
     res.json(response)
 })
