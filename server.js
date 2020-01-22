@@ -8,6 +8,8 @@ app.use(morgan('dev'));
 
 const validGenres = ['Animation', 'Drama', 'Romantic', 'Comedy', 'Spy', 'Crime', 'Thriller', 'Adventure', 'Documentary', 'Horror', 'Action', 'Western', 'History', 'Biography', 'Musical', 'Fantasy', 'War', 'Grotesque'];
 
+
+
 app.get('/movie', (req, res) => {
     const { genre, country, avg_vote } = req.query;
     let response = movies;
