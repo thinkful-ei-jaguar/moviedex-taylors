@@ -16,6 +16,10 @@ app.get('/movie', (req, res) => {
         response = response.filter(movie => movie.genre.toLocaleLowerCase().includes(genre.toLowerCase()));
     }
 
+    if(country) {
+        response = response.filter(movie=>movie.country.toLowerCase().includes(country.toLowerCase()))
+    }
+
 
     res.json(response)
 })
